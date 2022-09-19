@@ -10,8 +10,8 @@ const getAllUser = asyncHandler(async (req, res) => {
 })
 
 const getUser = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.id)
-    res.status(200).json(user)
+    // const user = await User.findById(req.params.id)
+    res.status(200).json(req.user)
 })
 
 const createUser = asyncHandler(async (req, res) => {
@@ -43,7 +43,7 @@ const updateUser = asyncHandler(async (req, res) => {
 })
 
 const deleteUser = asyncHandler(async (req, res) => {
-    const deletedUser = await User.findByIdAndDelete(req.params.id)
+    const deletedUser = await User.findByIdAndDelete(req.user.id)
     res.status(200).json(deletedUser)
 })
 
@@ -69,7 +69,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
-        expiresIn: '30d'
+        expiresIn: '1d'
     })
 }
 

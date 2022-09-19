@@ -45,20 +45,12 @@ const getStudents = asyncHandler(async (req, res) => {
     return res.status(200).json(students.students)
 })
 const addStudent = asyncHandler(async (req, res) => {
-    // const newStudent = await Course.findById(req.params.course)
-    // const newStudent = await Course.findByIdAndUpdate(req.params.course, req.body)
-    // console.log(req.params.body);
-    // return res.status(200).json(newStudent)
     const updatedCourse = await Course.findByIdAndUpdate(req.params.course, { students: req.body.students }, { new: true })
-    // console.log(req.body);
-
-    // res.status(200).json(req.body.students)
     return res.status(200).json(updatedCourse)
 })
 const updateStudent = asyncHandler(async (req, res) => {
     await Course.updateOne({ _id: req.params.course }, { $pull: { students: { _id: req.params.student } } })
     await Course.updateOne({ _id: req.params.course }, { $push: { students: req.body } })
-
     return res.status(200).json({
         message: 'Record updated'
     })
