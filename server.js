@@ -8,8 +8,10 @@ const cors = require('cors')
 connectDB()
 const app = express()
 app.use(cors({
-    origin: '*',
-    'Access-Control-Allow-Origin': '*',
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    // "preflightContinue": false,
+    // "optionsSuccessStatus": 204
 }));
 app.options('*', cors())
 app.use(express.json())
