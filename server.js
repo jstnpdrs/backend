@@ -18,7 +18,6 @@ app.use(function (req, res, next) {
     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-app.options('*', cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
