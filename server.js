@@ -9,15 +9,15 @@ connectDB()
 const app = express()
 app.use(cors({
     "origin": "*",
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    // "preflightContinue": false,
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE,OPTION",
+    "preflightContinue": true,
     // "optionsSuccessStatus": 204
 }));
-app.use(function (req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+// app.use(function (req, res, next) {
+//     res.setHeader("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+//     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
