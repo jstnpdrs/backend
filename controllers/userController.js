@@ -6,7 +6,7 @@ const User = require('../models/userModel')
 
 const getAllUser = asyncHandler(async (req, res) => {
     const users = await User.find().select('-password')
-    res.status(200).json(users)
+    res.header("Access-Control-Allow-Origin", "*").status(200).json(users)
 })
 
 const getUser = asyncHandler(async (req, res) => {
