@@ -8,7 +8,8 @@ const cors = require('cors')
 connectDB()
 const app = express()
 app.use(cors({
-    origin: '*'
+    origin: '*',
+    'Access-Control-Allow-Origin': '*',
 }));
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
